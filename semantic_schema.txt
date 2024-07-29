@@ -1,0 +1,2 @@
+customer aged {Age} is a {Gender} with marital status {Marital Status} is a {Occupation} with {Monthly Income} has completed {Educational Qualifications} \
+with family size of {Family size} belongs to latitude {latitude} and longitude {longitude} with pincode {Pin code} has given {Feedback} feedback
