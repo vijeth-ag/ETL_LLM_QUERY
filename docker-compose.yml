@@ -114,6 +114,29 @@ services:
     depends_on:
       - "etcd"
       - "minio"
+
+  attu:
+    container_name: attu
+    image: zilliz/attu:v2.2.8
+    environment:
+      MILVUS_URL: standalone:19530
+    ports:
+      - "8000:3000"
+    depends_on:
+      - "standalone"
+
+  streamlit:
+    container_name: streamlit
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - ./data/unprocessed:/data/unprocessed
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    command: ["streamlit", "run", "./app/etl_llm_query_app.py"]
     
 volumes:
   streaming_data:
